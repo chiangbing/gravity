@@ -1,0 +1,1 @@
+export JAVA=/opt/java6/bin/java

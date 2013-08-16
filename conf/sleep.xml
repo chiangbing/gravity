@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+
+    <property>
+        <name>work.class</name>
+        <value>com.hanborq.gravity.lib.demo.Sleeper</value>
+        <description>
+            The work class name specified in work configuration.
+        </description>
+    </property>
+
+    <property>
+        <name>work.threads.num</name>
+        <value>1</value>
+        <description>
+            Number of threads to start in each work runner.
+        </description>
+    </property>
+
+    <property>
+        <name>work.repetition</name>
+        <value>1000000</value>
+        <description>
+            How many times a work should repeat in each work thread.
+        </description>
+    </property>
+
+</configuration>

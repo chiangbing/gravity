@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+
+    <property>
+        <name>gravity.room.port</name>
+        <value>15900</value>
+        <description>
+            Port number which gravity room will be started at.
+        </description>
+    </property>
+
+    <property>
+        <name>gravity.room.metrics.collect.interval</name>
+        <value>1000</value>
+        <description>
+            How often the gravity room collect metrics from works.
+            Default: 1 second.
+        </description>
+    </property>
+
+    <property>
+        <name>gravity.room.status.report.interval</name>
+        <value>1000</value>
+        <description>
+            How often the gravity room send work status report back to client.
+            Default: 1 second.
+        </description>
+    </property>
+
+    <property>
+        <name>metrics.server.port</name>
+        <value>16900</value>
+        <description>
+            A metrics server is started for each gravity client to accept
+            metrics record from running work in gravity room. When a metrics
+            server starts, it'll try to find an available port starting from
+            metrics.server.port.
+        </description>
+    </property>
+
+    <property>
+        <name>metrics.sender.send.buffer.size</name>
+        <value>1000</value>
+        <description>
+            Metrics records is kept in a buffer before number of metrics records
+            if larger than metrics.sender.send.buffer.size or time since last
+            sending is larger than metrics.sender.send.buffer.time.
+        </description>
+    </property>
+
+    <property>
+        <name>metrics.sender.send.buffer.time</name>
+        <value>1000</value>
+        <description>
+            Max seconds for a metrics records to be hold in send buffer.
+        </description>
+    </property>
+
+    <property>
+        <name>status.server.port</name>
+        <value>18900</value>
+        <description>
+            A work status server is started for each gravity client. When a
+            status server starts, it'll try to find an available port starting
+            from status.server.port.
+        </description>
+    </property>
+
+    <property>
+        <name>work.runner.class</name>
+        <value>com.hanborq.gravity.DefaultWorkRunner</value>
+        <description>
+            Class name for work runner which run work in gravtiy room.
+            Default: com.hanborq.gravity.DefaultWorkRunner
+        </description>
+    </property>
+
+
+    <!-- work specified configuration -->
+
+    <property>
+        <name>work.class</name>
+        <value></value>
+        <description>
+            The work class name specified in work configuration.
+        </description>
+    </property>
+
+    <property>
+        <name>work.factory.class</name>
+        <value>com.hanborq.gravity.DefaultWorkFactory</value>
+        <description>
+            The class name for WorkFactory. WorkFactory is responsible to
+            create work instances to be run in work runner.
+        </description>
+    </property>
+
+    <property>
+        <name>work.threads.num</name>
+        <value></value>
+        <description>
+            Number of threads to start in each work runner.
+        </description>
+    </property>
+
+    <property>
+        <name>work.repetition</name>
+        <value></value>
+        <description>
+            How many times a work should repeat in each work thread.
+        </description>
+    </property>
+
+    <!-- latency analyzer -->
+    <property>
+        <name>latency.scale.unit</name>
+        <value>us</value>
+        <description>
+            Latency metrics records reported from gravity room is always in the
+            unit of nanoseconds(ns), which is too precise for most application.
+            Thus, a scale to specified time unit is done after metrics received.
+            Possible unit values are:
+                - "s": second
+                - "ms": millis second
+                - "us": micro second
+                - "ns": nanosecond (no scaling)
+        </description>
+    </property>
+
+    <property>
+        <name>latency.histogram.bin.splitter</name>
+        <value>log10</value>
+        <description>
+            How histogram is split into list of consecutive bins.
+            Possible built-in split methods are:
+                - log10: bin size are 10-based logarithm scaled
+                - uniform: bin size are uniformly split between
+                    latency.histogram.range.min and latency.histogram.range.max
+            A custumized splitter can be configured with class name.
+            (See Histogram.SplitBinAlgorithm.)
+        </description>
+    </property>
+
+    <property>
+        <name>latency.histogram.range.min</name>
+        <value>0</value>
+        <description>
+            Estimated minimum value for histogram. The number will be treated
+            as a scaled value by latency.scale.unit.
+            Default: 0.
+        </description>
+    </property>
+
+    <property>
+        <name>latency.histogram.range.max</name>
+        <value>10000000</value>
+        <description>
+            Estimated minimum value for histogram. The number will be treated
+            as a scaled value by latency.scale.unit.
+            Default: 10,000,000
+        </description>
+    </property>
+
+    <property>
+        <name>latency.histogram.data.num</name>
+        <value>1000000</value>
+        <description>
+            Estimated number of data for histogram. The number of data will
+            affect the number of bins of histogram (which is calculated with
+            Sturges' formula.
+        </description>
+    </property>
+</configuration>

@@ -1,0 +1,32 @@
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.bar {
+    fill: steelblue;
+}
+
+/*.x.axis path {
+    display: none;
+}*/
+
+.percentile line {
+    stroke: rgb(101, 165, 10);
+    stroke-width: 1;
+}
+
+.percentile circle {
+    stroke-width: 0;
+    fill: rgb(101, 165, 10);
+}
+
+.summary {
+    font-family: 12px sans-serif;
+}
+
+.summary th {
+    font-size: 16px;
+}
